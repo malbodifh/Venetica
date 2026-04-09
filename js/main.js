@@ -252,7 +252,7 @@ const projects = [
     before:'imagenes/anex1h.png', after:'imagenes/deex1h.png'
   },
   {
-    title_es:'Casa Residencial Cevills}', title_en:'Cevills Residential House',
+    title_es:'Casa Residencial Cevills', title_en:'Cevills Residential House',
     meta_es:'Heredia, CR · 2023', meta_en:'Heredia, CR · 2023',
     tags_es:['Residencial','2 pisos','600 m²'],
     tags_en:['Residential','2 floors','600 m²'],
@@ -273,8 +273,8 @@ const projects = [
     tags_es:['Residencial','450 m²','Diseño premium'],
     tags_en:['Residential','450 m²','Premium design'],
     category:'Residencial',
-    before:'imagenes/anex4h.png',
-    after:'imagenes/deex4h.png'
+    before:'imagenes/anex1h.png',
+    after:'imagenes/deex1h.png'
   },
   {
     title_es:'Edificio Corporativo Nexus', title_en:'Nexus Corporate Building',
@@ -282,7 +282,7 @@ const projects = [
     tags_es:['Comercial','8 pisos','BIM'],
     tags_en:['Commercial','8 floors','BIM'],
     category:'Comercial',
-    before:'imagenes/anex5h.png', after:'imagenes/deex5h.png'
+    before:'imagenes/anex2h.png', after:'imagenes/deex2h.png'
   },
   {
     title_es:'Nave Industrial LogiCR', title_en:'LogiCR Industrial Warehouse',
@@ -290,7 +290,7 @@ const projects = [
     tags_es:['Industrial','8.500 m²','Llave en mano'],
     tags_en:['Industrial','8,500 m²','Turnkey'],
     category:'Industrial',
-    before:'imagenes/anex6h.png', after:'imagenes/deex6h.png'
+    before:'imagenes/anex3h.png', after:'imagenes/deex3h.png'
   }
 ];
 
@@ -502,8 +502,11 @@ function rotateHeroBackground(delta) {
 
 const heroPrev = document.querySelector('.hero-carousel-btn.prev');
 const heroNext = document.querySelector('.hero-carousel-btn.next');
-if(heroPrev) heroPrev.addEventListener('click', () => rotateHeroBackground(-1));
-if(heroNext) heroNext.addEventListener('click', () => rotateHeroBackground(1));
+if(heroPrev) heroPrev.addEventListener('click', () => { rotateHeroBackground(-1); resetHeroTimer(); });
+if(heroNext) heroNext.addEventListener('click', () => { rotateHeroBackground(1); resetHeroTimer(); });
+
+let heroTimer = setInterval(() => rotateHeroBackground(1), 5000);
+function resetHeroTimer() { clearInterval(heroTimer); heroTimer = setInterval(() => rotateHeroBackground(1), 5000); }
 /* ══════════════════════════════════
    INIT
 ══════════════════════════════════ */
